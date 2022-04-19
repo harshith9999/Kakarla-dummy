@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Appointment from '../../pages/appointment/Appointment';
 import './banner.css';
 
 
@@ -7,7 +6,6 @@ const Banner = () => {
 
     return (
             <div className='home'>
-                <div className='col'>
                         <p className='large'>
                             Keep Family in  the loop and get support
                         </p>
@@ -27,12 +25,7 @@ const Banner = () => {
                             <img className='applinks' alt='play store' src='https://assets.website-files.com/5ce2ef9ce57aeb64f4784513/5cf766149ec8415f21913188_google-play.svg' />
                         </a>
                     </div>
-                </div>
-                <div className='apptContainer'>
-                    <div className='appt'>
-                        <Appointment />
-                    </div>
-                </div>
+                
             </div>
     )
 }

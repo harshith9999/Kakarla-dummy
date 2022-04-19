@@ -72,6 +72,9 @@ const ResponsiveAppBar = ({user}) => {
               <MenuItem >
                 <Typography onClick={() => navigate('/about')} textAlign="center">About</Typography>
               </MenuItem>
+              <MenuItem >
+                <Typography onClick={() => navigate('/testimonials')} textAlign="center">Testimonials</Typography>
+              </MenuItem>
               <MenuItem  >
                 <Typography onClick={() => navigate('/specialities')} textAlign="center">Specialities</Typography>
               </MenuItem>
@@ -103,6 +106,12 @@ const ResponsiveAppBar = ({user}) => {
               color: window.location.pathname === '/about' && '#fcbd2e', display: 'block', fontWeight: 600
             }}>
               About
+            </Link>
+            <Link onClick={() => navigate('/testimonials')} color="inherit" underline="none" sx={{
+              '&:hover': { color: '#fcbd2e', cursor: 'pointer' },
+              color: window.location.pathname === '/testimonials' && '#fcbd2e', display: 'block', fontWeight: 600
+            }}>
+              Testimonials
             </Link>
             <Link onClick={() => navigate('/specialities')} color="inherit" underline="none" sx={{
               '&:hover': { color: '#fcbd2e', cursor: 'pointer' },

@@ -1,0 +1,6 @@
+.videoflex{
+    display: flex;
+    flex-direction: row;
+    margin: 40px 70px;
+    justify-content: space-around;
+}

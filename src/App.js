@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './pages/login/Login';
 import Appointment from './pages/appointment/Appointment';
 import Home from './pages/home/Home';
+import Testimonials from './pages/testimonials/Testimonials';
 import About from './pages/about/About';
 import Contact from './pages/contact/Contact';
 import ProtectedRoute from './ProtectedRoute';
@@ -52,6 +53,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home user={user}/>} exact />
         <Route path="/about" element={<About user={user}/>} exact />
+        <Route path="/testimonials" element={<Testimonials user={user}/>} exact />
         <Route path="/specialities" element={<Specialities user={user}/>} exact />
         <Route path="/veneers" element={<Veneers user={user}/>} exact />
         <Route path="/tooth-jewellery" element={<ToothJewellery user={user} />} exact />

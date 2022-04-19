@@ -1,103 +1,116 @@
-.home{
-    display: flex;
-    flex-direction: row;
-    background-color: #fcbd2e ;
-}
-.col{
+.home {
     display: flex;
     flex-direction: column;
+    background-color: #fcbd2e;
     color: white;
-    padding:30px 60px ;
-    width:45%
+    padding: 30px 120px;
 }
-.large{
+
+.large {
     font-size: 60px;
     font-weight: 700;
     margin: 10px 0px 0px 0px;
 }
-.small{
+
+.small {
     font-size: 21px;
     margin: 10px 0px
 }
-.medium{
+
+.medium {
     font-size: 26px;
     font-weight: 500;
     margin: 10px 0px
 }
-.stores{
+
+.stores {
     display: flex;
 }
-.playstore{
-    margin-left:15px ;
+
+.playstore {
+    margin-left: 35px;
 }
-.apptContainer{
-    width:50%;
+
+.apptContainer {
+    width: 50%;
     padding: 10px 20px;
 }
-.appt{
+
+.appt {
     background-color: white;
     border-radius: 10px;
     padding-bottom: 10px;
     margin: 40px 30px;
 }
+
 @media only screen and (max-width: 1199px) {
-    .home{
-        flex-direction: column;
-        align-items: center;
-    }
-    .col{
-        width:unset;
+    .home {
+        width: unset;
         padding: 0px 250px;
     }
-    .apptContainer{
+
+    .apptContainer {
         width: 100%;
         padding: unset;
         max-width: 630px;
     }
-  }
-  @media only screen and (max-width: 845px) {
-    .col{
+    
+}
+
+@media only screen and (max-width: 845px) {
+    .home {
         padding: 0px 150px;
-  }
-}
-  @media only screen and (max-width: 645px) {
-    .col{
-        padding: 0px 80px;
-  }
-}
-  @media only screen and (max-width: 520px) {
-    .col{
-        width:unset;
-        padding:  0px 40px;
     }
-    .appt{
+    .playstore {
+        margin-left: 15px;
+    }
+}
+
+@media only screen and (max-width: 645px) {
+    .home {
+        padding: 0px 80px;
+    }
+}
+
+@media only screen and (max-width: 520px) {
+    .home {
+        width: unset;
+        padding: 0px 40px;
+    }
+
+    .appt {
         margin: 40px 10px;
     }
-    .large{
+
+    .large {
         font-size: 48px;
     }
-    .small{
+
+    .small {
         font-size: 16px;
     }
-    .medium{
+
+    .medium {
         font-size: 22px;
     }
-    .stores{
+
+    .stores {
         margin-left: unset;
     }
-  }
-  @media only screen and (max-width: 425px) {
-    .col{
-        width:unset;
-        padding:  0px 20px;
+}
+
+@media only screen and (max-width: 425px) {
+    .home {
+        padding: 0px 20px;
     }
 }
+
 @media only screen and (max-width: 385px) {
-    .col{
-        width:unset;
+    .home {
         padding: 0px 0px 0px 10px
     }
-    .applinks{
-        width:120px
+
+    .applinks {
+        width: 120px
     }
 }
