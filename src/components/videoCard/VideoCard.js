@@ -3,12 +3,12 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-
+import "./videoCard.css"
 
 const VideoCard = () => {
 
     return (
-    <Card sx={{width:"30%"}}>
+    <Card className="videocardWidth">
       <CardMedia
         component="iframe"
         height="180"

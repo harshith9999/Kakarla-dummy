@@ -1,0 +1,9 @@
+.videocardWidth{
+width: 30%;
+}
+@media only screen and (max-width: 767px) {
+    .videocardWidth{
+        width: 100%;
+        margin-bottom: 15px;
+        }
+}
