@@ -1,0 +1,34 @@
+.cardsdiv{
+    display: flex;
+    justify-content: center;
+}
+.cards{
+    width: 25%;
+    margin: 20px;
+}
+.specialitiesHeading{
+    font-size: 50px;
+    font-weight: 600;
+    text-align: center;
+    margin: 50px 0px 0px 0px
+}
+.specialitiesBody{
+    font-size: 15px;
+    color:  #777;
+    margin: 20px;
+    text-align: center;
+}
+@media only screen and (max-width: 1079px) {
+    .cards{
+        width: 27%;
+    }
+}
+@media only screen and (max-width: 936px) {
+    .cardsdiv{
+        flex-direction: column;
+        align-items: center;
+    }
+    .cards{
+        width: 90%;
+    }
+}

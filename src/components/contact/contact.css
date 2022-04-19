@@ -1,0 +1,40 @@
+.input{
+    margin: 35px 15px;
+}
+.contactform{
+    margin-right: 15px;
+    text-align: center;
+    width: 35%;
+}
+.sbmtbtn{
+    margin: 20px 0px !important;
+    background-color: #fcbd2e !important;
+    width: 90%
+
+}
+.contactinfo{
+    width:31%;
+    text-align: center;
+    background-color: #292D33;
+    color: white;
+    font-size: 17px;
+}
+.contactheading{
+    margin-top: 50px;
+    font-size: 19px;
+    font-weight: 700;
+    color: #fcbd2e ;
+}
+.contactservices{
+    margin-top: 5px;
+    font-weight: 500;
+    line-height: 30px;
+}
+@media only screen and (max-width: 720px) {
+.contactform{
+    width: 100%;
+}
+.contactinfo{
+    width:100%;
+}
+}

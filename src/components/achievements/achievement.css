@@ -1,0 +1,26 @@
+.achieveDiv{
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 175px;
+    font-size: 50px;
+    text-align: center;
+}
+.achieveHolders{
+    font-size: 20px;
+}
+.numbdiv{
+    width: 15%;
+}
+@media only screen and (max-width: 1000px) {
+    .achieveDiv{
+        padding: 20px 50px;
+    }
+}
+@media only screen and (max-width: 750px) {
+    .achieveDiv{
+        flex-direction: column;
+    }
+    .numbdiv{
+        width: 100%;
+    }
+}
