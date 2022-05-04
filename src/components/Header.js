@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate  } from 'react-router-dom';
 import Link from '@mui/material/Link';
-import { getAuth, signOut } from 'firebase/auth';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiAppBar from '@mui/material/AppBar';
@@ -67,20 +66,15 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-export default function Header({ role, uid }) {
+export default function Header({ role }) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const bgcolor = { backgroundColor: '#fcbd2e' };
   const color = { color: 'white' };
   const navigate = useNavigate();
-
-  const appointmentHandler = () => {
-    navigate('/appointment')
-  }
   
   const logoutHandler = async () => {
-    const auth = getAuth();
-    await signOut(auth)
+    localStorage.removeItem("login");
     navigate('/login')
   }
 
@@ -146,15 +140,25 @@ export default function Header({ role, uid }) {
         </List>
         <Divider />
         <List>
-          <ListItem button onClick={appointmentHandler} key='Appointment' 
+          <ListItem button onClick={() => navigate('/lecture')} key='Add Lecture' 
           sx={{'&:hover': { backgroundColor: '#fcbd2e', color: 'white' },
-            color: window.location.pathname === '/appointment' && 'white',
-            backgroundColor:window.location.pathname === '/appointment' && '#fcbd2e'}}>
+            color: window.location.pathname === '/lecture' && 'white',
+            backgroundColor:window.location.pathname === '/lecture' && '#fcbd2e'}}>
             <ListItemIcon>
               <InboxIcon />
             </ListItemIcon>
-            <ListItemText primary='Book Appointment' />
+            <ListItemText primary='Add Lecture' />
           </ListItem>
+          <ListItem button onClick={() => navigate('/view-lectures')} key='View Lectures'
+             sx={{'&:hover': { backgroundColor: '#fcbd2e', color: 'white' },
+            color: window.location.pathname === '/view-lectures' && 'white',
+            backgroundColor:window.location.pathname === '/view-lectures' && '#fcbd2e'}}>
+           
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText primary='View Lectures' />
+            </ListItem>
           <ListItem button onClick={logoutHandler} key='Logout'
            sx={{'&:hover': { backgroundColor: '#fcbd2e', color: 'white' },
            color: window.location.pathname === '/login' && 'white',

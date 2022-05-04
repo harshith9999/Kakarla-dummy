@@ -1,16 +1,26 @@
-.videoflex{
+/* .videoflex{
     display: flex;
     flex-direction: row;
     margin: 40px 70px;
     justify-content: space-around;
+} */
+.grid-container {
+    display: grid;
+    margin: 40px 70px;
+    grid-template-columns: auto auto auto;
 }
-@media only screen and (max-width: 767px) {
-    .videoflex{
+ .grid-item{
+    margin: 20px;
+
+ } 
+@media only screen and (max-width: 800px) {
+    .grid-container{
+        display: flex;
         flex-direction: column;
     }
 }
 @media only screen and (max-width: 400px) {
-    .videoflex{
+    .grid-container{
         margin: 40px 30px;
 
     }

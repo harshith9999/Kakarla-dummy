@@ -1,15 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from './pages/login/Login';
-import Appointment from './pages/appointment/Appointment';
+import Lecture from './pages/lectures/Lecture';
 import Home from './pages/home/Home';
 import Testimonials from './pages/testimonials/Testimonials';
 import About from './pages/about/About';
 import Contact from './pages/contact/Contact';
 import ProtectedRoute from './ProtectedRoute';
-import { onAuthStateChanged } from 'firebase/auth';
-import { auth, db } from './firebase';
-import { doc, getDoc } from "firebase/firestore";
 import Specialities from './pages/specialities/Specialities';
 import Veneers from './staticPages/Veneers';
 import ToothJewellery from './staticPages/ToothJewellery';
@@ -22,32 +19,10 @@ import PartialAndComplete from './staticPages/PartialAndComplete';
 import ToothFilling from './staticPages/ToothFilling';
 import EstheticDentistry from './staticPages/EstheticDentistry';
 import CosmeticDentistry from './staticPages/CosmeticDentistry';
+import ViewLecture from './pages/lectures/ViewLecture';
 
 function App() {
-  const [user, setUser] = useState()
-  const [isLoginChecked, setIsLoginChecked] = useState(false);
-  const [userData, setUserData] = useState({ role: 'patient' })
-
-  const fetchUserData = async (phoneNumber) => {
-    setIsLoginChecked(false)
-    const userRef = await getDoc(doc(db, `users/${phoneNumber}`))
-    const docData = userRef.data()
-    setUserData(docData)
-    setIsLoginChecked(true);
-  }
-  useEffect(() => {
-    onAuthStateChanged(auth, (data) => {
-      setUser(data)
-      if (data) {
-        fetchUserData(data.phoneNumber)
-      }
-      else {
-        setIsLoginChecked(true);
-      }
-    })
-
-  }, [])
-
+  var user = JSON.parse(localStorage.getItem('login'));
   return (
     <Router>
       <Routes>
@@ -67,11 +42,16 @@ function App() {
         <Route path="/esthetic-dentistry" element={<EstheticDentistry user={user} />} exact />
         <Route path="/cosmetic-dentistry" element={<CosmeticDentistry user={user} />} exact />
         <Route path="/contact" element={<Contact user={user} />} exact />
-        <Route path="/login" key='patient' element={<Login user={user} isLoginChecked={isLoginChecked} />} exact />
-        <Route path="/admin-login" key='admin' element={<Login user={user} />} exact />
-        <Route path="/appointment" key='add-appointment' element={<ProtectedRoute component={Appointment}
-          user={user} requiredRoles={['admin', 'patient']} isLoginChecked={isLoginChecked}
-          userRole={userData?.role}
+        <Route path="/login" key='patient' element={<Login user={user}  />} exact />
+        <Route path="/admin-login" key='admin' element={<Login/>} exact />
+        <Route path="/lecture" key='add-lecture' element={<ProtectedRoute component={Lecture}
+          user={user} requiredRoles={['admin']} 
+        />} exact />
+        <Route path="/lecture/:id" key='edit-lecture' element={<ProtectedRoute component={Lecture}
+          user={user} requiredRoles={['admin']}  
+        />} exact />
+        <Route path="/view-lectures" key='view-lectures' element={<ProtectedRoute component={ViewLecture}
+          user={user} requiredRoles={['admin']} 
         />} exact />
         <Route path="*" element={<Home />} exact />
       </Routes>

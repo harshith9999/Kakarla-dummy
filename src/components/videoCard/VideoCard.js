@@ -5,23 +5,22 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import "./videoCard.css"
 
-const VideoCard = () => {
+const VideoCard = ({title,description,url}) => {
 
     return (
-    <Card className="videocardWidth">
+    <Card >
       <CardMedia
         component="iframe"
         height="180"
-        image="https://www.youtube.com/embed/tgbNymZ7vqY"
+        image={url}
         alt="video"
       />
       <CardContent sx={{textAlign:"center"}}>
         <Typography gutterBottom variant="h5" component="div">
-        Amazon System Design
+        {title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+         {description}
         </Typography>
       </CardContent>
     </Card>

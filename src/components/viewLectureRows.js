@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 const Rows = (props) => {
     let navigate = useNavigate();
     const { row, deleteData } = props
+    const [open, setOpen] = useState(false);
     const [dialog, setDialog] = useState(false);
 
     const handleDialog = () => {
@@ -26,34 +27,25 @@ const Rows = (props) => {
     return (
         <React.Fragment>
             <AlertDialog dialog={dialog} handleDialog={handleDialog} onDeleteData={onDeleteData} />
-            <TableRow  >
-                <TableCell >
-                    {row.name}
+            <TableRow sx={{ '& > *': { borderBottom: 'unset' } }} onClick={() => setOpen(!open)}>
+               
+                <TableCell component="th" scope="row">
+                    {row.description}
                 </TableCell>
-                <TableCell>{row.phone_number}</TableCell>
+                <TableCell>{row.title}</TableCell>
+                <TableCell>{row.url}</TableCell>
                 <TableCell>
                     <IconButton
-                        aria-label="edit-doctor"
+                        aria-label="edit-appointment"
                         size='small'
-                        onClick={() => {
-                            if (window.location.pathname === '/view-doctors') {
-                                navigate(`/add-doctors/${row._id}`)
-                            }
-                            if (window.location.pathname === '/view-assistant-doctors') {
-                                navigate(`/add-assistant-doctors/${row._id}`)
-                            }
-                            if (window.location.pathname === '/view-instructors') {
-                                navigate(`/add-instructors/${row._id}`)
-                            }
-                        }
-                        }
+                        onClick={() => row?._id && navigate(`/lecture/${row._id}`)}
                     >
                         <EditIcon />
                     </IconButton>
                 </TableCell>
                 <TableCell>
                     <IconButton
-                        aria-label="delete-doctor"
+                        aria-label="delete-appointment"
                         size='small'
                         onClick={handleDialog}
                     >
@@ -61,6 +53,7 @@ const Rows = (props) => {
                     </IconButton>
                 </TableCell>
             </TableRow>
+         
         </React.Fragment>
     );
 }

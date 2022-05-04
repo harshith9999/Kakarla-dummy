@@ -35,20 +35,14 @@
     border-radius: 10px
 }
 .btnContainer{
-    margin-left: 5px;
+    display: flex;
+    justify-content: center;
 }
-.btnContainer3{
-    margin-left: -20px;
-}
-.btnContainer2{
-    margin-left: 30px;
-}
-
-.otp{
+.signup{
     background-color: #fcbd2e !important;
     margin: 15px 50px !important;
-    width: 60%;
-    height: 45px;
+    width: 50%;
+    height: 30px;
 }
 .verify{
     background-color: #fcbd2e !important;
@@ -68,6 +62,7 @@
 .resendContainer{
     display: flex;
     align-items: baseline;
+    justify-content: center;
 }
 
 .inputwidth input {

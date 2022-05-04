@@ -5,8 +5,12 @@
 }
 
 .inpt {
-    margin: 10px;
-    width: 400px
+    margin: 15px;
+    width: 330px
+}
+
+.fileInpt{
+    display: flex;
 }
 
 .apbtn {
