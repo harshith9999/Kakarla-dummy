@@ -15,9 +15,8 @@ export default function Lecture() {
     const [alert, setMessage] = useState({ message: "", severity: "" });
     const [openAlert, setOpenAlert] = useState(false);
     const [selectedFile, setSelectedFile] = useState();
-	const [isFilePicked, setIsFilePicked] = useState(false);
-    let formData= new FormData()
     let { id } = useParams();
+    let formData = new FormData()
 
     const Alert = React.forwardRef(function Alert(props, ref) {
         return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -26,17 +25,14 @@ export default function Lecture() {
     const handleChange = (name, value) => {
         setLectureData({ ...lectureData, [name]: value })
     }
-    const fileInputHandler= (event) => {
-        formData.append('file',event.target.files[0])
+    const fileInputHandler = (event) => {
         setSelectedFile(event.target.files[0]);
-		setIsFilePicked(true);
-        console.log(formData.file)
 
     }
     const Validator = () => {
         let formErrors = {
-            description: lectureData.description.trim().length < 1 ? 'Description should not be empty' : "" ,
-            title: lectureData.title.trim().length < 1 ? 'Title should not be empty' :"" ,
+            description: lectureData.description.trim().length < 1 ? 'Description should not be empty' : "",
+            title: lectureData.title.trim().length < 1 ? 'Title should not be empty' : "",
             url: lectureData.url.trim().length < 1 ? 'URL should not be empty' : "",
         }
         setErrors(formErrors)
@@ -54,7 +50,10 @@ export default function Lecture() {
         try {
             if (Validator()) {
                 setOpenLoader(true);
-                await axios.post(`${process.env.REACT_APP_API_URL}/video`, lectureData)
+                const response = await axios.post(`${process.env.REACT_APP_API_URL}/video`, lectureData)
+                formData.append('file', selectedFile)
+                formData.append('id', response?.data.id)
+                await axios.post(`${process.env.REACT_APP_API_URL}/video/file-upload`, formData)
                 setOpenLoader(false);
                 const message = alert;
                 message.message = "Done";
@@ -135,12 +134,12 @@ export default function Lecture() {
                     onChange={handleChange} required fullWidth value={lectureData.url} />
             </div>
             <div className='fileInpt'>
-            <Button variant="contained" component="label" className='apbtn'>
-                Upload File
-                <input type="file" hidden onChange={fileInputHandler}/>
-            </Button>
-           {selectedFile&& <p>{selectedFile.name}</p>}
-           </div>
+                <Button variant="contained" component="label" className='apbtn'>
+                    Upload File
+                    <input type="file" hidden onChange={fileInputHandler} />
+                </Button>
+                {selectedFile && <p>{selectedFile.name}</p>}
+            </div>
             {!id ?
                 <Button type="reset" className='apbtn' variant="contained" onClick={submitdata}>
                     Submit

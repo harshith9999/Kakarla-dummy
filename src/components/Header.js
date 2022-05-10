@@ -153,11 +153,19 @@ export default function Header({ role }) {
              sx={{'&:hover': { backgroundColor: '#fcbd2e', color: 'white' },
             color: window.location.pathname === '/view-lectures' && 'white',
             backgroundColor:window.location.pathname === '/view-lectures' && '#fcbd2e'}}>
-           
               <ListItemIcon>
                 <InboxIcon />
               </ListItemIcon>
               <ListItemText primary='View Lectures' />
+            </ListItem>
+            <ListItem button onClick={() => navigate('/view-booked-demos')} key='View Booked Demos'
+             sx={{'&:hover': { backgroundColor: '#fcbd2e', color: 'white' },
+            color: window.location.pathname === '/view-booked-demos' && 'white',
+            backgroundColor:window.location.pathname === '/view-booked-demos' && '#fcbd2e'}}>
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText primary='View Booked Demos' />
             </ListItem>
           <ListItem button onClick={logoutHandler} key='Logout'
            sx={{'&:hover': { backgroundColor: '#fcbd2e', color: 'white' },

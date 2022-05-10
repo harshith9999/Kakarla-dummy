@@ -63,7 +63,8 @@ const Footer = () => {
                         <PhoneEnabledIcon />
                         <p className='contactDetails2'>Phone Number</p>
                     </div>
-                    <Link href="tel:+917396031313" underline="none" sx={{display:'flex',my:2}} color="inherit">+91 73 96 03 13 13</Link>
+                    <Link href="tel:+918939323032" underline="none" sx={{display:'flex',my:2}} color="inherit">+91 89 39 32 30 32</Link>
+                    <Link href="tel:+916369293173" underline="none" sx={{display:'flex',my:2}} color="inherit">+91 63 69 29 31 73</Link>
                 </div>
                 <div className="contact">
                     <div className="contactDetails">
@@ -79,7 +80,7 @@ const Footer = () => {
                         <LocationOnIcon />
                         <p className='contactDetails2'>Location</p>
                     </div>
-                    <p>Beside PLR Convention Centre, Air By Pass Road, Tirupati - 517501, Andhra Pradesh.</p>
+                    <p>No.51, New Balaji Colony, Tirupati , Andhra Pradesh.</p>
                 </div>
             </div>
         </div>)

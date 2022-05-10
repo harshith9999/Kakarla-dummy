@@ -19,7 +19,7 @@ const Testimonials = ({ user }) => {
         <div >
             <ResponsiveAppBar user={user} />
             <div className="grid-container">
-            {lecture?.map((item) => <div className="grid-item"> <VideoCard title={item.title} description={item.description} url={item.url} /></div>)}
+            {lecture?.map((item) => <div className="grid-item"> <VideoCard lecture={item} /></div>)}
             </div>
         </div>
 

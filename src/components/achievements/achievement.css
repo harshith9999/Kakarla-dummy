@@ -8,8 +8,14 @@
 .achieveHolders{
     font-size: 20px;
 }
+.numbers{
+    margin: 0px;
+}
 .numbdiv{
-    width: 15%;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 @media only screen and (max-width: 1000px) {
     .achieveDiv{

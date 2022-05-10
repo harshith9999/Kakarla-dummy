@@ -13,10 +13,25 @@ import Link from '@mui/material/Link';
 import './components.css'
 
 
-const ResponsiveAppBar = ({user}) => {
+const ResponsiveAppBar = ({ user }) => {
   let navigate = useNavigate();
   const sx = { backgroundColor: 'white', color: 'black' }
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl1, setAnchorEl1] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const open1 = Boolean(anchorEl1);
+
+  const handleClick1 = (event) => {
+    setAnchorEl1(event.currentTarget);
+  };
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+    setAnchorEl1(null);
+  };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -33,9 +48,9 @@ const ResponsiveAppBar = ({user}) => {
             noWrap
             onClick={() => navigate('/')}
             component="div"
-            sx={{ ml: 5, display: { xs: 'none', md: 'none', lg: 'flex' }, cursor: 'pointer', color: '#fcbd2e', fontWeight: 600 }}
+            sx={{ ml: 5, display: { xs: 'none', md: 'none', lg: 'flex' }, cursor: 'pointer', fontWeight: 600 }}
           >
-            Kakarla <span className='logotext'> Dental</span>
+            MEET <span className='logotext'> IITIANS</span>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex', lg: 'none' } }}>
             <IconButton
@@ -57,7 +72,7 @@ const ResponsiveAppBar = ({user}) => {
               }}
               keepMounted
               transformOrigin={{
-                vertical: 'top',
+                vertical: 'bottom',
                 horizontal: 'left',
               }}
               open={Boolean(anchorElNav)}
@@ -73,16 +88,41 @@ const ResponsiveAppBar = ({user}) => {
                 <Typography onClick={() => navigate('/about')} textAlign="center">About</Typography>
               </MenuItem>
               <MenuItem >
-                <Typography onClick={() => navigate('/testimonials')} textAlign="center">Testimonials</Typography>
+                <Typography ar onClick={() => navigate('/testimonials')} textAlign="center">Testimonials</Typography>
               </MenuItem>
               <MenuItem  >
-                <Typography onClick={() => navigate('/specialities')} textAlign="center">Specialities</Typography>
+                <div >
+                  <Typography aria-controls={open ? 'demo-positioned-menu' : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={open ? 'true' : undefined}
+                    onClick={handleClick1}
+                    textAlign="center">Courses</Typography>
+                  <Menu
+                    id="demo-positioned-menu"
+                    aria-labelledby="demo-positioned-button"
+                    anchorEl={anchorEl}
+                    open={open1}
+                    onClose={handleClose}
+                    anchorOrigin={{
+                      vertical: 'center',
+                      horizontal: 'left',
+                    }}
+                    transformOrigin={{
+                      vertical: 'top',
+                      horizontal: 'left',
+                    }}
+                  >
+                    <MenuItem onClick={handleClose}>Profile</MenuItem>
+                    <MenuItem onClick={handleClose}>My account</MenuItem>
+                    <MenuItem onClick={handleClose}>Logout</MenuItem>
+                  </Menu>
+                </div>
               </MenuItem>
               <MenuItem >
                 <Typography onClick={() => navigate('/contact')} textAlign="center">Contact Us</Typography>
               </MenuItem>
               <MenuItem onClick={() => navigate('/login')}>
-                <Typography textAlign="center">{user?'Appointments':'Login'}</Typography>
+                <Typography textAlign="center">{user ? 'Appointments' : 'Login'}</Typography>
               </MenuItem>
             </Menu>
           </Box>
@@ -113,12 +153,35 @@ const ResponsiveAppBar = ({user}) => {
             }}>
               Testimonials
             </Link>
-            <Link onClick={() => navigate('/specialities')} color="inherit" underline="none" sx={{
-              '&:hover': { color: '#fcbd2e', cursor: 'pointer' },
-              color: window.location.pathname === '/specialities' && '#fcbd2e', display: 'block', fontWeight: 600
-            }}>
-              Specialities
-            </Link>
+            <div>
+              <Link aria-controls={open ? 'demo-positioned-menu' : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? 'true' : undefined}
+                onClick={handleClick}
+                color="inherit"
+                underline="none"
+                sx={{ '&:hover': { color: '#fcbd2e', cursor: 'pointer' }, color: window.location.pathname === '/courses' && '#fcbd2e', display: 'block', fontWeight: 600 }}>
+                Courses
+              </Link>
+              <Menu
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+              >
+                <MenuItem onClick={handleClose}>Profile</MenuItem>
+                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleClose}>Logout</MenuItem>
+              </Menu>
+            </div>
+
             <Link onClick={() => navigate('/contact')} color="inherit" underline="none" sx={{
               '&:hover': { color: '#fcbd2e', cursor: 'pointer' },
               color: window.location.pathname === '/contact' && '#fcbd2e', display: 'block', fontWeight: 600
@@ -129,7 +192,7 @@ const ResponsiveAppBar = ({user}) => {
               '&:hover': { color: '#fcbd2e', cursor: 'pointer' },
               color: window.location.pathname === '/login' && '#fcbd2e', display: 'block', fontWeight: 600
             }}>
-              {user?'Appointments':'Login'}
+              {user ? 'Appointments' : 'Login'}
             </Link>
           </Box>
 
